@@ -24,12 +24,12 @@ public class SolutionTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void shouldThrowExceptionWhenLengthIsBelow1() {
-        Solution solution = new Solution(0);
+        new Solution(0);
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void shouldThrowExceptionWhenLengthIsGreaterThen9() {
-        Solution solution = new Solution(10);
+        new Solution(10);
     }
 
     @Test
@@ -49,17 +49,17 @@ public class SolutionTest {
         }
     }
 
-    private boolean matches1to9(final String value) {
-        Pattern oneToNine = Pattern.compile("^[1-9]*$");
-        return oneToNine.matcher(value).matches();
-    }
-
     @Test
     public void shouldNotHaveDuplicateDigits() {
         for(int i = 1; i <= 9; i++) {
             Solution solution = new Solution(i);
             assertTrue(isNotHaveDuplicateDigits(solution.value()));
         }
+    }
+
+    private boolean matches1to9(final String value) {
+        Pattern oneToNine = Pattern.compile("^[1-9]*$");
+        return oneToNine.matcher(value).matches();
     }
 
     private boolean isNotHaveDuplicateDigits(String value) {
