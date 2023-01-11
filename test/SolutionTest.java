@@ -1,5 +1,8 @@
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.regex.Pattern;
 
 import static org.junit.Assert.*;
@@ -55,6 +58,23 @@ public class SolutionTest {
             Solution solution = new Solution(i);
             assertTrue(isNotHaveDuplicateDigits(solution.value()));
         }
+    }
+
+    @Test
+    public void shouldCreatedWithCustomSymbols() {
+        List<Character> symbols = Arrays.asList('A','B','C','D','E','F','G');
+        new Solution(symbols);
+        new Solution(3, symbols);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void shouldThrowExceptionWhenSymbolIsNull() {
+        new Solution(null);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void shouldThrowExceptionWhenSymbolIsEmpty() {
+        new Solution(new ArrayList<>());
     }
 
     private boolean matches1to9(final String value) {
