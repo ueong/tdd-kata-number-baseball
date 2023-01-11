@@ -9,21 +9,21 @@ public class AttemptTest {
     @Test
     public void shouldBeCreatedWithSolutionAndAnswer() {
         Solution solution = new Solution();
-        Answer answer = new Answer(new Scanner(new ByteArrayInputStream("1234".getBytes())));
+        Answer answer = new Answer(with("1234"));
         new Attempt(solution, answer);
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void shouldThrowExceptionWhenAnswerDoesNotMatchesWithSolutionSymbols() {
         Solution solution = new Solution(4);
-        Answer answer = new Answer(new Scanner(new ByteArrayInputStream("12345".getBytes())));
+        Answer answer = new Answer(with("12345"));
         new Attempt(solution, answer);
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void shouldThrowExceptionWhenAnswerDoesNotMatchesWithSolutionLength() {
         Solution solution = new Solution(4);
-        Answer answer = new Answer(new Scanner(new ByteArrayInputStream("123A".getBytes())));
+        Answer answer = new Answer(with("123A"));
         new Attempt(solution, answer);
     }
 
@@ -38,7 +38,7 @@ public class AttemptTest {
 
     private void testResult(String solutionValue, String answerValue, int strikes, int balls, int outs) {
         FixedSolution solution = new FixedSolution(solutionValue);
-        Answer answer = new Answer(new Scanner(new ByteArrayInputStream(answerValue.getBytes())));
+        Answer answer = new Answer(with(answerValue));
         Attempt attempt = new Attempt(solution, answer);
         assertEquals(strikes, attempt.strikes());
         assertEquals(balls, attempt.balls());
@@ -55,5 +55,9 @@ public class AttemptTest {
         public String value() {
             return this.value;
         }
+    }
+
+    private Scanner with(String inputContent) {
+        return new Scanner(new ByteArrayInputStream(inputContent.getBytes()));
     }
 }
