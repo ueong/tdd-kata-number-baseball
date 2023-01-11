@@ -22,6 +22,16 @@ public class SolutionTest {
         assertEquals(4, solution.length());
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void shouldThrowExceptionWhenLengthIsBelow1() {
+        Solution solution = new Solution(0);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void shouldThrowExceptionWhenLengthIsGreaterThen9() {
+        Solution solution = new Solution(10);
+    }
+
     @Test
     public void shouldShowRandomSolutionWithLength() {
         Solution solution = new Solution(5);

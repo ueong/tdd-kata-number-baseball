@@ -1,9 +1,11 @@
 import java.util.*;
 import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.stream.Collectors;
 
 public class Solution {
+    private static final int MIN_LENGTH = 1;
+    private static final int MAX_LENGTH = 9;
     private static final int DEFAULT_LENGTH = 4;
-    private static final char[] DEFAULT_SYMBOLS = {'1', '2', '3', '4', '5', '6', '7', '8', '9'};
     private int length;
     private String value;
 
@@ -12,17 +14,20 @@ public class Solution {
     }
 
     public Solution(int length) {
+        this.validate(length);
         this.length = length;
         this.value = generateValue();
     }
 
+    private void validate(int length) {
+        if(length < MIN_LENGTH || length > MAX_LENGTH) throw new IllegalArgumentException("Invalid length");
+    }
+
     private String generateValue() {
-        List<Character> shuffledCharacters = shuffledCharacters();
-        StringBuilder sb = new StringBuilder();
-        for(int i = 0; i < this.length; i++) {
-            sb.append(shuffledCharacters.get(i));
-        }
-        return sb.toString();
+        return shuffledCharacters().stream()
+                .limit(this.length)
+                .map(String::valueOf)
+                .collect(Collectors.joining());
     }
 
     private List<Character> shuffledCharacters() {
