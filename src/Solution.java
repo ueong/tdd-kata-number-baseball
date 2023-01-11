@@ -5,9 +5,9 @@ public class Solution {
     private static final int MIN_LENGTH = 1;
     private static final int DEFAULT_LENGTH = 4;
     private static final List<Character> DEFAULT_SYMBOLS = Arrays.asList('1', '2', '3', '4', '5', '6', '7', '8', '9');
-    private int length;
-    private String value;
-    private List<Character> symbols;
+    private final int length;
+    private final String value;
+    private final List<Character> symbols;
 
     public Solution() {
         this(DEFAULT_LENGTH);
@@ -24,7 +24,7 @@ public class Solution {
     public Solution(int length, List<Character> symbols) {
         this.validate(length, symbols);
         this.length = length;
-        this.symbols = shuffledCharacters(symbols);
+        this.symbols = symbols;
         this.value = generateValue();
     }
 
@@ -34,7 +34,7 @@ public class Solution {
     }
 
     private String generateValue() {
-        return this.symbols.stream()
+        return shuffledCharacters(this.symbols).stream()
                 .limit(this.length)
                 .map(String::valueOf)
                 .collect(Collectors.joining());
