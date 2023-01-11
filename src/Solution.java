@@ -41,8 +41,9 @@ public class Solution {
     }
 
     private List<Character> shuffledCharacters(List<Character> symbols) {
-        Collections.shuffle(symbols);
-        return symbols;
+        List<Character> copied = new ArrayList<>(symbols);
+        Collections.shuffle(copied);
+        return copied;
     }
 
     public int length() {
@@ -51,5 +52,9 @@ public class Solution {
 
     public String value() {
         return this.value;
+    }
+
+    public List<Character> symbols() {
+        return this.symbols;
     }
 }
