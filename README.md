@@ -35,7 +35,7 @@ NumberBaseballGame> 4자리 숫자를 입력하세요 (남은 횟수: 6) $ 5243
 4 Ball.
 
 NumberBaseballGame> 4자리 숫자를 입력하세요 (남은 횟수: 5) $ 5678
-2 Ball, 2 Out.
+1 Ball, 3 Out.
 
 # 잘못된 입력
 NumberBaseballGame> 4자리 숫자를 입력하세요 (남은 횟수: 4) $ ABCD
