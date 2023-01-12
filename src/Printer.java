@@ -1,6 +1,5 @@
 import java.io.PrintStream;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -33,5 +32,17 @@ public class Printer {
             needToPrint.add(attempt.outs() + PREFIX_OUT);
         }
         return needToPrint.stream().collect(Collectors.joining(", ")) + ".";
+    }
+
+    public void invalidInput() {
+        outputStream.println("Invalid input!!!");
+    }
+
+    public void win() {
+        outputStream.println("Correct!!! You win!!!");
+    }
+
+    public void lose() {
+        outputStream.println("Game Over!!! You lose!!!");
     }
 }

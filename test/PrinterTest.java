@@ -59,6 +59,27 @@ public class PrinterTest {
         assertEquals("4 Out.\n", outputStreamCaptor.toString());
     }
 
+    @Test
+    public void testPrintInvalidInput() {
+        Printer printer = new Printer(System.out);
+        printer.invalidInput();
+        assertEquals("Invalid input!!!\n", outputStreamCaptor.toString());
+    }
+
+    @Test
+    public void testPrintWin() {
+        Printer printer = new Printer(System.out);
+        printer.win();
+        assertEquals("Correct!!! You win!!!\n", outputStreamCaptor.toString());
+    }
+
+    @Test
+    public void testPrintLose() {
+        Printer printer = new Printer(System.out);
+        printer.lose();
+        assertEquals("Game Over!!! You lose!!!\n", outputStreamCaptor.toString());
+    }
+
     private Attempt getAttempt(String solutionValue, String answerValue) {
         return new Attempt(new FixedSolution(solutionValue), new Answer(with(answerValue)));
     }

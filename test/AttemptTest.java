@@ -27,6 +27,13 @@ public class AttemptTest {
         new Attempt(solution, answer);
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void shouldThrowExceptionWhenAnswerHasDuplicatedSymbols() {
+        Solution solution = new Solution(4);
+        Answer answer = new Answer(with("1133"));
+        new Attempt(solution, answer);
+    }
+
     @Test
     public void resultTest() {
         testResult("1234", "1234", 4, 0, 0);
@@ -34,7 +41,6 @@ public class AttemptTest {
         testResult("1234", "5678", 0, 0, 4);
         testResult("1234", "3142", 0, 4, 0);
         testResult("1234", "1942", 1, 2, 1);
-        testResult("1234", "1133", 1, 2, 1);
     }
 
     private void testResult(String solutionValue, String answerValue, int strikes, int balls, int outs) {
