@@ -2,10 +2,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-import java.util.Scanner;
 
 import static org.junit.Assert.assertEquals;
 
@@ -81,22 +79,7 @@ public class PrinterTest {
     }
 
     private Attempt getAttempt(String solutionValue, String answerValue) {
-        return new Attempt(new FixedSolution(solutionValue), new Answer(with(answerValue)));
+        return new Attempt(new FixedSolution(solutionValue), new Answer(ScannerHelper.with(answerValue)));
     }
 
-    private class FixedSolution extends Solution {
-        private final String value;
-        public FixedSolution(String value) {
-            super(value.length());
-            this.value = value;
-        }
-        @Override
-        public String value() {
-            return this.value;
-        }
-    }
-
-    private Scanner with(String inputContent) {
-        return new Scanner(new ByteArrayInputStream(inputContent.getBytes()));
-    }
 }

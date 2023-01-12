@@ -42,4 +42,8 @@ public class Attempt {
     public int outs() {
         return this.outs;
     }
+
+    public boolean isCorrect() {
+        return this.balls == 0 && this.outs == 0;
+    }
 }
