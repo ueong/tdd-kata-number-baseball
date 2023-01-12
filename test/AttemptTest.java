@@ -34,6 +34,7 @@ public class AttemptTest {
         testResult("1234", "5678", 0, 0, 4);
         testResult("1234", "3142", 0, 4, 0);
         testResult("1234", "1942", 1, 2, 1);
+        testResult("1234", "1133", 1, 2, 1);
     }
 
     private void testResult(String solutionValue, String answerValue, int strikes, int balls, int outs) {
